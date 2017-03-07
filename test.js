@@ -18,32 +18,22 @@ function checkFuncBasics(name,argNum,msg) {
 	if (argNum) assert.equal(func.length,argNum,'Your function should take ' + argNum + ' argument(s) (that means inputs). Does it?')
 }
 
-describe('forEach', function(){
+describe('forEach()', function(){
 	it("should be a function that takes an array and a function", function() {
 		checkFuncBasics('forEach')
 	})
-	it("should multiply all numbers of an input array together")
+	it("should run your callback function on each element of your array", function() {
+		var total = 1
 		forEach([1, 2, 3, 4], function(a){ total *= a; })
 		expect(total).to.equal(24)
 	})
-
-describe('reduce', function(){
-	it("should be a function that takes an array and a function", function(){
-		checkFuncBasics('reduce')
-	})
-	it("should return the sum of all elements of array", function(){
-		assert.equal(10, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator + element }))
-	})
-	it("should multiply all elements of the array together", function(){
-		assert.equal(24, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator * element }))
-	})
 })
 
-describe('map', function(){
+describe('map()', function(){
 	it("should be a function that takes an array and a function", function(){
 		checkFuncBasics('map')
 	})
-	it("When passing a callback function that returns the square of a number, and storing the results in a variable called 'squares', you should be able to state an iteration of the array and return that number's square", function(){
+	it("should run your callback function over your input array and return new results", function(){
 		var squares = map([1, 2, 3, 4], function(v){ return v*v })
 			expect(squares[0]).to.equal(1)
 			expect(squares[1]).to.equal(4)
@@ -53,14 +43,26 @@ describe('map', function(){
 	})
 })
 
-describe('filter', function(){
+describe('filter()', function(){
 	it("should be a function that takes an array and a function", function(){
 		checkFuncBasics('filter')
 	})
-	it("Your function should filter out the odd numbers of the array and only contain even numbers", function(){
+	it("should run your callback function over each element of your array and remove any elements that do not fit the parameters of your callback", function(){
 		var evens = filter([1, 2, 3, 4], function(v){ return v%2 === 0 })
 		expect(evens[0]).to.equal(2)
 		expect(evens[1]).to.equal(4)
+	})
+})
+
+describe('reduce()', function(){
+	it("should be a function that takes an array and a function", function(){
+		checkFuncBasics('reduce')
+	})
+	it("should concatenate all elements of your array and return a new value based on the parameters of your callback function.", function(){
+		assert.equal(10, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator + element }))
+	})
+	it("should concatenate all elements of your array and return a new value based on the parameters of your callback function.", function(){
+		assert.equal(24, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator * element }))
 	})
 })
 

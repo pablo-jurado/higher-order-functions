@@ -4,20 +4,18 @@
 // write your own forEach() function that takes an array and a function
 // ----------------------------
 
-function forEach(array, callback){
-     for ( var i = 0; i < array.length; i++ ) {
-        var result = (callback(array[i]))
-    }
-    return result
-}
+// function forEach(array, callback){
+//     for ( var i = 0; i < array.length; i++ ) {
+//         var result = (callback(array[i]))
+//     }
+//     return result
+// }
 
-var total = 1
+var html = ''
 
-// ----------------------------
-// write your own reduce()
-// that takes an array and a function
-// ----------------------------
+var lets = ['a','b','c']
 
+lets.forEach(el=>html += `<p>${el}</p>`)
 
 // ----------------------------
 // write your own map()
@@ -31,6 +29,12 @@ var total = 1
 // ----------------------------
 
 
+// ----------------------------
+// write your own reduce()
+// that takes an array and a function
+// ----------------------------
+
+//  HARD MODE
 // ----------------------------
 // using array.sort(), sort the following array
 // of people by name
@@ -58,19 +62,7 @@ var customers = [
     { first: 'Jack', last: 'White'}
 ]
 
-var results = customers
-    .filter(function(el){
-        return el.first.charAt(0) === 'J'
-    })
-    .map(function(el){
-        el.fullname = el.first + ' ' + el.last
-        return el
-    })
-    .sort(function(a, b){
-        if (a.fullname < b.fullname) { return -1 }
-        if (a.fullname > b.fullname) { return 1 }
-        return 0
-    })
+
 
 
 console.log('********************************************************************************************************************************************')
@@ -93,16 +85,18 @@ function checkFuncBasics(name,argNum,msg) {
 	if (argNum) assert.equal(func.length,argNum,'Your function should take ' + argNum + ' argument(s) (that means inputs). Does it?')
 }
 
-describe('forEach', function(){
+describe('forEach()', function(){
 	it("should be a function that takes an array and a function", function() {
 		checkFuncBasics('forEach')
 	})
-	it("should multiply all numbers of an input array together")
+	it("should multiply all numbers of an input array together", function() {
+		var total = 1
 		forEach([1, 2, 3, 4], function(a){ total *= a; })
 		expect(total).to.equal(24)
 	})
+})
 
-describe('reduce', function(){
+describe('reduce()', function(){
 	it("should be a function that takes an array and a function", function(){
 		checkFuncBasics('reduce')
 	})
@@ -114,7 +108,7 @@ describe('reduce', function(){
 	})
 })
 
-describe('map', function(){
+describe('map()', function(){
 	it("should be a function that takes an array and a function", function(){
 		checkFuncBasics('map')
 	})
@@ -128,7 +122,7 @@ describe('map', function(){
 	})
 })
 
-describe('filter', function(){
+describe('filter()', function(){
 	it("should be a function that takes an array and a function", function(){
 		checkFuncBasics('filter')
 	})

@@ -4,14 +4,18 @@
 // write your own forEach() function that takes an array and a function
 // ----------------------------
 
+// function forEach(array, callback){
+//     for ( var i = 0; i < array.length; i++ ) {
+//         var result = (callback(array[i]))
+//     }
+//     return result
+// }
 
-var total = 1
+var html = ''
 
-// ----------------------------
-// write your own reduce()
-// that takes an array and a function
-// ----------------------------
+var lets = ['a','b','c']
 
+lets.forEach(el=>html += `<p>${el}</p>`)
 
 // ----------------------------
 // write your own map()
@@ -25,6 +29,12 @@ var total = 1
 // ----------------------------
 
 
+// ----------------------------
+// write your own reduce()
+// that takes an array and a function
+// ----------------------------
+
+//  HARD MODE
 // ----------------------------
 // using array.sort(), sort the following array
 // of people by name
