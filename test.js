@@ -33,7 +33,7 @@ describe('map()', function(){
 	it("should be a function that takes an array and a function", function(){
 		checkFuncBasics('map')
 	})
-	it("should run your callback function over your input array and return new results", function(){
+	it("should run your callback function over your input array and return a new array where every element has been transformed by the callback", function(){
 		var squares = map([1, 2, 3, 4], function(v){ return v*v })
 			expect(squares[0]).to.equal(1)
 			expect(squares[1]).to.equal(4)
@@ -47,7 +47,7 @@ describe('filter()', function(){
 	it("should be a function that takes an array and a function", function(){
 		checkFuncBasics('filter')
 	})
-	it("should run your callback function over each element of your array and remove any elements that do not fit the parameters of your callback", function(){
+	it("should run your callback function over each element of your array and exclude any elements that do not fit the condition of your callback", function(){
 		var evens = filter([1, 2, 3, 4], function(v){ return v%2 === 0 })
 		expect(evens[0]).to.equal(2)
 		expect(evens[1]).to.equal(4)
@@ -55,14 +55,14 @@ describe('filter()', function(){
 })
 
 describe('reduce()', function(){
-	it("should be a function that takes an array and a function", function(){
-		checkFuncBasics('reduce')
+	it("should be a function that takes an array, a function and has a starting value", function(){
+		checkFuncBasics('reduce', 3)
 	})
-	it("should concatenate all elements of your array and return a new value based on the parameters of your callback function.", function(){
+	it("should combine all elements of your array into a new value.", function(){
 		assert.equal(10, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator + element }))
 	})
-	it("should concatenate all elements of your array and return a new value based on the parameters of your callback function.", function(){
-		assert.equal(24, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator * element }))
+	it("should combine all elements of your array into a new value", function(){
+		assert.equal(24, reduce([2, 2, 3, 4], function(accumulator, element){ return accumulator * element }))
 	})
 })
 

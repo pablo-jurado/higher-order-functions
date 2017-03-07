@@ -11,12 +11,6 @@
 //     return result
 // }
 
-var html = ''
-
-var lets = ['a','b','c']
-
-lets.forEach(el=>html += `<p>${el}</p>`)
-
 // ----------------------------
 // write your own map()
 // that takes an array and a function
@@ -31,8 +25,9 @@ lets.forEach(el=>html += `<p>${el}</p>`)
 
 // ----------------------------
 // write your own reduce()
-// that takes an array and a function
+// that takes an array, a function, and a starting value
 // ----------------------------
+
 
 //  HARD MODE
 // ----------------------------
