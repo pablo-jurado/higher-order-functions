@@ -1,0 +1,10 @@
+{
+  "name": "loopsAndIterables",
+  "version": "0.0.0",
+  "repository": "git@github.com:magentanova/loopsAndIterables.git",
+  "license": "MIT",
+  "description": "exercises in javascript functions, logical operators, and control flow",
+  "dependencies": {
+    "chai": "^3.5.0"
+  }
+}
