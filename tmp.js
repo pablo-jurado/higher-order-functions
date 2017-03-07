@@ -1,3 +1,78 @@
+//  Part I
+
+// ----------------------------
+// write your own forEach() function that takes an array and a function
+// ----------------------------
+
+function forEach(array, callback){
+     for ( var i = 0; i < array.length; i++ ) {
+        var result = (callback(array[i]))
+    }
+    return result
+}
+
+var total = 1
+
+// ----------------------------
+// write your own reduce()
+// that takes an array and a function
+// ----------------------------
+
+
+// ----------------------------
+// write your own map()
+// that takes an array and a function
+// ----------------------------
+
+
+// ----------------------------
+// write your own filter()
+// that takes an array and a function
+// ----------------------------
+
+
+// ----------------------------
+// using array.sort(), sort the following array
+// of people by name
+// ----------------------------
+
+var people = [
+    {name:"Matt", alma_mater:"Univ of Texas - Austin"},
+    {name:"Brian", alma_mater:"Texas A&M"},
+    {name:"Jesse", alma_mater:"Univ of Texas - Austin"},
+    {name:"Justin", alma_mater:"Univ of Florida"}
+]
+
+// ----------------------------
+// Using array.map(), array.filter(), and array.sort() on the
+// array below:
+// - filter for customers whose first-names start with 'J',
+// - map to their fullnames,
+// - and then sort the items alphabetically by fullname
+// ----------------------------
+
+var customers = [
+    { first: 'Joe', last: 'Blogs'},
+    { first: 'John', last: 'Smith'},
+    { first: 'Dave', last: 'Jones'},
+    { first: 'Jack', last: 'White'}
+]
+
+var results = customers
+    .filter(function(el){
+        return el.first.charAt(0) === 'J'
+    })
+    .map(function(el){
+        el.fullname = el.first + ' ' + el.last
+        return el
+    })
+    .sort(function(a, b){
+        if (a.fullname < b.fullname) { return -1 }
+        if (a.fullname > b.fullname) { return 1 }
+        return 0
+    })
+
+
 console.log('********************************************************************************************************************************************')
 console.log('')
 console.log('Test Results Below')
