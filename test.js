@@ -55,34 +55,44 @@ describe('filter()', function(){
 })
 
 describe('reduce()', function(){
-	it("should be a function that takes an array, a function and has a starting value", function(){
+	it("should be a function that takes an array, a function and a starting value", function(){
 		checkFuncBasics('reduce', 3)
 	})
 	it("should combine all elements of your array into a new value.", function(){
-		assert.equal(10, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator + element }))
-	})
-	it("should combine all elements of your array into a new value", function(){
-		assert.equal(24, reduce([2, 2, 3, 4], function(accumulator, element){ return accumulator * element }))
+		var sum = reduce([1, 2, 3, 4], 
+			function(accumulator, element){ 
+				return accumulator + element 
+			}, 0)
+		assert.equal(10, sum)
+
+		var product = reduce([2, 2, 3, 4], 
+			function(accumulator, element){ 
+				return accumulator * element 
+			}, 1)
+
+		assert.equal(48,product) 
+
+		var htmlString = reduce(['home','about','contact us'],
+			function(acc,el) {
+				return acc + `<a href="#${el.replace(' ','-')}">${el}</a>`
+			}, '')
+
+		assert.equal(htmlString, 
+			'<a href="#home">home</a><a href="#about">about</a><a href="#contact-us">contact us</a>')
 	})
 })
 
-describe('array.sort()', function(){
-	it("should take two inputs", function(){
-		checkFuncBasics('people.sort')
-	})
-	it("Your function should have sorted the array called 'people' into alphabetical order", function(){
+describe('people', function(){
+	it("should be sorted into alphabetical order", function(){
 		expect(people[0].name).to.equal("Brian")
 		expect(people[1].name).to.equal("Jesse")
 		expect(people[2].name).to.equal("Justin")
 	})
 })
 
-describe('array.sort()', function(){
-	it("should ", function(){
-		checkFuncBasics('people.sort')
-	})
-	it("Your function should have filtered customers whose first names start with J, map to their full names and then sort the customers alphabetically", function(){
-		expect(results[0].fullname).to.equal("Jack White")
-		expect(results[1].fullname).to.equal("Joe Blogs")
+describe('newCustomers', function(){
+	it("`newCustomers` should be a transformation of the customers array according to the criteria described in worksheet.js", function(){
+		expect(newCustomers[0].fullname).to.equal("Jack White")
+		expect(newCustomers[1].fullname).to.equal("Joe Blogs")
 	})
 })

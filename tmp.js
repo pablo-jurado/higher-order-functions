@@ -1,33 +1,53 @@
 //  Part I
 
 // ----------------------------
-// write your own forEach() function that takes an array and a function
+// write your own forEach() function. 
+// your function should take an array and a callback as input.
+// it should run the callback on each element in the array.
 // ----------------------------
 
-// function forEach(array, callback){
-//     for ( var i = 0; i < array.length; i++ ) {
-//         var result = (callback(array[i]))
-//     }
-//     return result
-// }
-
+//  Part II
 // ----------------------------
-// write your own map()
-// that takes an array and a function
-// ----------------------------
-
-
-// ----------------------------
-// write your own filter()
-// that takes an array and a function
+// write your own map() function.
+// your function should take an array and a callback as input.
+// it should return a new array, where every element in the 
+// original has been transformed by the callback. .
 // ----------------------------
 
 
+//  Part III
 // ----------------------------
-// write your own reduce()
-// that takes an array, a function, and a starting value
+// write your own filter() function.
+// your function should take an array and a callback as input.
+// it should return a new array, where elements have been 
+// kept or excluded according to the callback. 
 // ----------------------------
 
+
+//  Part IV
+// ----------------------------
+// write your own reduce() function.
+
+// this one's new. it should take an array, a callback and 
+// a starting value as input.
+
+// calling .reduce() should combine all the elements of the 
+// array into a single value. the starting value tells what to 
+// start with. 
+
+// the callback should take as input a "running total" and 
+// an array element, in that order. it should return an update
+// to the running total. 
+
+// look at the tests for clarification.
+// ----------------------------
+
+var reduce = function(arr,cb,start) {
+	arr.forEach(function(el) {
+		start = cb(start,el)
+	})
+	return start
+}
 
 //  HARD MODE
 // ----------------------------
@@ -117,17 +137,32 @@ describe('filter()', function(){
 })
 
 describe('reduce()', function(){
-	it("should be a function that takes an array, a function and has a starting value", function(){
+	it("should be a function that takes an array, a function and a starting value", function(){
 		checkFuncBasics('reduce', 3)
 	})
 	it("should combine all elements of your array into a new value.", function(){
-		assert.equal(10, reduce([1, 2, 3, 4], function(accumulator, element){ return accumulator + element }))
-	})
-	it("should combine all elements of your array into a new value", function(){
-		assert.equal(24, reduce([2, 2, 3, 4], function(accumulator, element){ return accumulator * element }))
+		var sum = reduce([1, 2, 3, 4], 
+			function(accumulator, element){ 
+				return accumulator + element 
+			}, 0)
+		assert.equal(10, sum)
+
+		var product = reduce([2, 2, 3, 4], 
+			function(accumulator, element){ 
+				return accumulator * element 
+			}, 1)
+
+		assert.equal(48,product) 
+
+		var htmlString = reduce(['home','about','contact us'],
+			function(acc,el) {
+				return acc + `<a href="#${el.replace(' ','-')}">${el}</a>`
+			}, '')
+		assert.equal(htmlString, '<a href="#home">home</a><a href="#about">about</a><a href="#contact-us">contact us</a>')
 	})
 })
-
+'<a href="#home">home</a><a href="#about">about</a><a href="#contact-us">contact us</a>'
+'<a href="#home">home</a><a href="#about">about</a><a href="#contact-us">contact</a>'
 describe('array.sort()', function(){
 	it("should take two inputs", function(){
 		checkFuncBasics('people.sort')
