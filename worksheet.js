@@ -85,14 +85,14 @@ var people = [
   {name: 'Justin', alma_mater: 'Univ of Florida'}
 ]
 
-people.sort(function (a, b) {
+function sortNameAlpphabetic (a, b) {
   if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
   if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
 
   return 0
-})
+}
 
-console.log(people)
+people.sort(sortNameAlpphabetic)
 
 // ----------------------------
 // Using array.map(), array.filter(), and array.sort() on the
@@ -112,3 +112,20 @@ var customers = [
   {first: 'Dave', last: 'Jones'},
   {first: 'Jack', last: 'White'}
 ]
+
+function getNamesWithJ (obj) {
+  if (obj.first[0] === 'J') return obj
+}
+
+function getFullName (obj) {
+  return {fullname: obj.first + ' ' + obj.last}
+}
+
+function sortfullnameAlphabetic (a, b) {
+  if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1
+  if (a.fullname.toLowerCase() > b.fullname.toLowerCase()) return 1
+
+  return 0
+}
+
+var newCustomers = customers.filter(getNamesWithJ).map(getFullName).sort(sortfullnameAlphabetic)
