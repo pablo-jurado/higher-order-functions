@@ -81,9 +81,18 @@ function reduce (arr, fun, startVal) {
 var people = [
   {name: 'Matt', alma_mater: 'Univ of Texas - Austin'},
   {name: 'Brian', alma_mater: 'Texas A&M'},
-    {name: 'Jesse', alma_mater: 'Univ of Texas - Austin'},
-    {name: 'Justin', alma_mater: 'Univ of Florida'}
+  {name: 'Jesse', alma_mater: 'Univ of Texas - Austin'},
+  {name: 'Justin', alma_mater: 'Univ of Florida'}
 ]
+
+people.sort(function (a, b) {
+  if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+  if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+
+  return 0
+})
+
+console.log(people)
 
 // ----------------------------
 // Using array.map(), array.filter(), and array.sort() on the
@@ -98,10 +107,10 @@ var people = [
 // ----------------------------
 
 var customers = [
-    { first: 'Joe', last: 'Blogs'},
-    { first: 'John', last: 'Smith'},
-    { first: 'Dave', last: 'Jones'},
-    { first: 'Jack', last: 'White'}
+  {first: 'Joe', last: 'Blogs'},
+  {first: 'John', last: 'Smith'},
+  {first: 'Dave', last: 'Jones'},
+  {first: 'Jack', last: 'White'}
 ]
 
 
