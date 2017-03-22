@@ -64,11 +64,10 @@ function filter (arr, fun) {
 // look at the tests for clarification.
 // ----------------------------
 
-function reduce (arr, fun, index) {
-  var runningTotal
-  var total
-  for (var i = index; i < arr.length; i++) {
-    total += fun(runningTotal, arr[i])
+function reduce (arr, fun, startVal) {
+  var total = startVal
+  for (var i = 0; i < arr.length; i++) {
+    total = fun(total, arr[i])
   }
   return total
 }
