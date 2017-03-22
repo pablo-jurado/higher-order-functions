@@ -6,6 +6,12 @@
 // it should run the callback on each element in the array.
 // ----------------------------
 
+function forEach (arr, fun) {
+  for (var i = 0; i < arr.length; i++) {
+    fun(arr[i])
+  }
+}
+
 //  Part II
 // ----------------------------
 // write your own map() function.
@@ -14,6 +20,14 @@
 // original has been transformed by the callback. .
 // ----------------------------
 
+function map (arr, fun) {
+  var newArr = []
+  for (var i = 0; i < arr.length; i++) {
+    newArr[i] = fun(arr[i])
+  }
+  return newArr
+}
+
 //  Part III
 // ----------------------------
 // write your own filter() function.
@@ -21,6 +35,16 @@
 // it should return a new array, where elements have been
 // kept or excluded according to the callback.
 // ----------------------------
+
+function filter (arr, fun) {
+  var newArr = []
+  for (var i = 0; i < arr.length; i++) {
+    if (fun(arr[i])) {
+      newArr.push(arr[i])
+    }
+  }
+  return newArr
+}
 
 //  Part IV
 // ----------------------------
@@ -39,6 +63,15 @@
 
 // look at the tests for clarification.
 // ----------------------------
+
+function reduce (arr, fun, index) {
+  var runningTotal
+  var total
+  for (var i = index; i < arr.length; i++) {
+    total += fun(runningTotal, arr[i])
+  }
+  return total
+}
 
 //  HARD MODE
 // ----------------------------
